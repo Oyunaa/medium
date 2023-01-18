@@ -9,7 +9,7 @@ import { users } from "./components/data";
 import NewsDetail from "./components/NewsDetail";
 import Login from "./components/admin/Login";
 import Admin from "./components/admin/Admin";
-import AdminIndex from "./components/admin/AdminIndex";
+// import AdminIndex from "./components/admin/AdminIndex";
 
 const App = () => {
   const [data, setData] = useState([]);
