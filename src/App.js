@@ -64,7 +64,7 @@ const App = () => {
             setAdmin={setAdmin}
           />
 
-          <h3>Hello Page</h3>
+          {/* <h3>Hello Page</h3> */}
           <div>
             <Routes>
               <Route
