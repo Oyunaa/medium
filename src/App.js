@@ -63,6 +63,8 @@ const App = () => {
             openModal={openModal}
             setAdmin={setAdmin}
           />
+
+          <h3>Hello Page</h3>
           <div>
             <Routes>
               <Route
