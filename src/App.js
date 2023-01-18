@@ -84,7 +84,7 @@ const App = () => {
         <div>
           <Routes>
             <Route exact path="/login" element={<Login />} />
-            <Route path="/admin" element={<AdminIndex />} />
+            {/* <Route path="/admin" element={<AdminIndex />} /> */}
           </Routes>
         </div>
       )}
