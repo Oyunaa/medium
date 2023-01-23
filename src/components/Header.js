@@ -65,7 +65,6 @@ export default function Header({
         showModal={showModal}
         onLogin={onLogin}
         setShowModal={openModal}
-        setAdmin={setAdmin}
       />
     </div>
   );

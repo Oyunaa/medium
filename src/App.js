@@ -1,95 +1,35 @@
 import React, { useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Main from "./components/Main";
-import ImageSection from "./components/ImageSection";
 import { Routes, Route } from "react-router-dom";
-import { users } from "./components/data";
 import NewsDetail from "./components/NewsDetail";
 import Login from "./components/admin/Login";
 import Admin from "./components/admin/Admin";
-// import AdminIndex from "./components/admin/AdminIndex";
+import MainLayout from "./components/MainLayout";
+import Main from "./components/Main";
+import Users from "./components/admin/Users";
+import AddUser from "./components/admin/AddUser";
+import Dashboard from "./components/admin/Dashboard";
+import UseEfectExample from "./components/useEfectExample";
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [user, setUser] = useState();
-  const [showModal, setShowModal] = useState(false);
-  const [admin, setAdmin] = useState(false);
-
-  const [bgColor, setBgColor] = useState(user ? "white" : "#ffc017");
-  const objStyle = {
-    backgroundColor: bgColor,
-  };
-  const handleScroll = (event) => {
-    if (user) {
-      setBgColor("white");
-    } else {
-      if (event.currentTarget.scrollTop >= 600) {
-        setBgColor("white");
-      } else {
-        setBgColor("#ffc017");
-      }
-    }
-  };
-  const openModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const onLogin = (uname, pword) => {
-    users.map((userObj) => {
-      if (userObj.username == uname && userObj.password == pword) {
-        setShowModal(false);
-        setUser(userObj);
-
-        return "success";
-      }
-    });
-  };
-
   return (
     <div>
-      {!admin ? (
-        <div
-          style={{ width: "100vw", overflow: "scroll", height: "100vh" }}
-          onScroll={handleScroll}
-        >
-          <Header
-            style={objStyle}
-            onLogin={onLogin}
-            user={user}
-            setUser={setUser}
-            showModal={showModal}
-            openModal={openModal}
-            setAdmin={setAdmin}
-          />
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/newsdetails/:id" element={<NewsDetail />} />
+        </Route>
+      </Routes>
 
-          {/* <h3>Hello Page</h3> */}
-          <div>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    {!user && <ImageSection />}
-                    <Main user={user} />
-                  </>
-                }
-              />
-              <Route path="/about" element={<About />} />
-              <Route path="/newsdetails/:id" element={<NewsDetail />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
-      ) : (
-        <div>
-          <Routes>
-            <Route exact path="/login" element={<Login />} />
-            {/* <Route path="/admin" element={<AdminIndex />} /> */}
-          </Routes>
-        </div>
-      )}
+      <Routes>
+        <Route exact path="/login" element={<Login />} />
+        <Route element={<Admin />}>
+          <Route index path="/admin" element={<Dashboard />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/adduser" element={<AddUser />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
