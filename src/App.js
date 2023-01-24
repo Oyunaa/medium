@@ -10,6 +10,8 @@ import Users from "./components/admin/Users";
 import AddUser from "./components/admin/AddUser";
 import Dashboard from "./components/admin/Dashboard";
 import UseEfectExample from "./components/useEfectExample";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -30,6 +32,7 @@ const App = () => {
           <Route path="/adduser" element={<AddUser />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 };

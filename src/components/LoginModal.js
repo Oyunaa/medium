@@ -46,14 +46,6 @@ export default function LoginModal({
               <button className="btn btn-secondary pe-4" onClick={setShowModal}>
                 Close
               </button>
-
-              <span
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                Go to admin login
-              </span>
             </div>
           </div>
         </div>

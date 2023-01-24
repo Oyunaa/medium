@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BarChart } from "./BarChart";
 import { PieChart } from "./PieChart";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function Admin() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="navbar bg-dark flex-nowrap">
@@ -12,7 +13,16 @@ export default function Admin() {
         </a>
         <input type="text" className="w-100 form-control bg-dark border-0" />
         <div className="nav text-nowrap">
-          <span className="text-light"> Log Out </span>
+          <span className="text-light">{localStorage.getItem("name")}</span>
+          <span
+            className="text-light"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/login");
+            }}
+          >
+            Log Out
+          </span>
         </div>
       </div>
       <div className="container-fluid">

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // const [data, setData] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!localStorage.getItem("name")) {
+      navigate("/login");
+    }
+
     setLoading(true);
     fetch("https://medium-api-psi.vercel.app/api/news")
       .then((response) => response.json())
